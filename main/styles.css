@@ -1,0 +1,129 @@
+/* Обнуление стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Розовая тема (как на фото) */
+    --main-bg-color: #000000;
+    --accent-color: #f8c0c8; /* Нежно-розовый */
+    --text-on-dark: #ffffff;
+    --text-on-light: #333333;
+    
+    
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+}
+
+/* --- ХЕДЕР --- */
+.main-header {
+    background-color: var(--main-bg-color);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--text-on-dark);
+    font-size: 40px;
+    letter-spacing: 8px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.logo p {
+    color: var(--accent-color);
+    font-size: 10px;
+    letter-spacing: 5px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-on-dark);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    font-weight: 300;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+/* --- ГЛАВНАЯ СЕКЦИЯ (HERO) --- */
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* Добавляем реальную ссылку на картинку */
+    background-image: 
+        linear-gradient(rgba(248, 192, 200, 0.6), rgba(248, 192, 200, 0.6)), 
+        url('MainPage.jpg');
+
+    background-size: cover;       /* Картинка заполнит весь блок */
+    background-position: center;  /* Картинка будет по центру */
+    background-repeat: no-repeat;
+    /* background-attachment: fixed;  <- Удалил пока, так как на мобилках может глючить */
+}
+
+.hero-content {
+    z-index: 2;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    font-weight: 400;
+    color: var(--text-on-light);
+    font-style: italic;
+    
+}
+
+.hero-title span {
+    font-weight: 700;
+    font-style: normal;
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    color: #555;
+    text-transform: uppercase;
+}
+
+
+
+
+/* Адаптивность для мобилок */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-title {
+        font-size: 45px;
+    }
+}
