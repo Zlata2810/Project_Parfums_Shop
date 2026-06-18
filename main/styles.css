@@ -15,10 +15,7 @@
     
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #fff;
-}
+
 
 /* --- ХЕДЕР --- */
 .main-header {
@@ -77,15 +74,14 @@ nav ul li a:hover {
     position: relative;
     overflow: hidden;
     
-    /* Добавляем реальную ссылку на картинку */
+   
     background-image: 
         linear-gradient(rgba(248, 192, 200, 0.6), rgba(248, 192, 200, 0.6)), 
         url('MainPage.jpg');
 
-    background-size: cover;       /* Картинка заполнит весь блок */
-    background-position: center;  /* Картинка будет по центру */
+    background-size: cover;      
+    background-position: center;  
     background-repeat: no-repeat;
-    /* background-attachment: fixed;  <- Удалил пока, так как на мобилках может глючить */
 }
 
 .hero-content {
@@ -114,19 +110,106 @@ nav ul li a:hover {
     text-transform: uppercase;
 }
 
+.section-title {
+    text-align: center;
+    padding-top: 60px;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
 
-/* Контейнер карточки */
+
+
+.categories-nav {
+    display: flex;
+    justify-content: center;
+    gap: 50px;           
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+
+.cat-item {
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.3s;
+}
+
+
+.circle-wrapper {
+    width: 150px;      
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;   
+    margin-bottom: 15px;
+    border: 2px solid transparent; 
+    transition: 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+}
+
+
+.circle-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    
+    transition: 0.5s ease;
+}
+
+
+.cat-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--main-bg-color); 
+    transition: 0.3s;
+}
+
+
+.cat-item:hover .circle-wrapper {
+    border-color: var(--accent-color); 
+    transform: translateY(-5px);       
+}
+
+.cat-item:hover img {
+    transform: scale(1.1);           
+}
+
+.cat-item:hover .cat-title {
+    color: var(--accent-color);        
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 600px) {
+    .categories-nav {
+        gap: 20px;
+    }
+    .circle-wrapper {
+        width: 100px;
+        height: 100px;
+    }
+    .cat-title {
+        font-size: 10px;
+    }
+}
+
+
 .perfume-card {
     position: relative;
     width: 280px;
     background: #fff;
     border: 1px solid #eee;
     text-align: center;
-    overflow: visible; /* Чтобы окошко могло немного выходить за границы, если нужно */
+    overflow: visible; 
     transition: 0.3s;
 }
 
-/* Контейнер для фото и всплывающего окна */
+
 .image-container {
     position: relative;
     background-color: var(--light-gray, #f9f9f9);
@@ -138,33 +221,33 @@ nav ul li a:hover {
     mix-blend-mode: multiply;
 }
 
-/* --- СТИЛЬ ВСПЛЫВАЮЩЕГО ОКОШКА --- */
+
 .notes-window {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.8); /* Сцентровано и чуть уменьшено */
+    transform: translate(-50%, -50%) scale(0.8); 
     width: 80%;
-    background: rgba(255, 255, 255, 0.95); /* Почти белый непрозрачный фон */
+    background: rgba(255, 255, 255, 0.95); 
     padding: 20px;
     border: 1px solid var(--pink);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     
-    /* Скрываем по умолчанию */
+  
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s ease;
     z-index: 10;
 }
 
-/* Появление при наведении на контейнер картинки */
+
 .image-container:hover .notes-window {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -50%) scale(1); /* Возвращаем нормальный размер */
+    transform: translate(-50%, -50%) scale(1); 
 }
 
-/* Текст внутри окошка нот */
+
 .notes-window h4 {
     font-family: 'Playfair Display', serif;
     font-size: 16px;
@@ -191,7 +274,7 @@ nav ul li a:hover {
     font-weight: 600;
 }
 
-/* Инфо карточки (название, цена) */
+
 .card-info {
     padding: 20px;
 }
@@ -208,10 +291,10 @@ nav ul li a:hover {
     margin-bottom: 15px;
 }
 .card img {
-    width: 100%;           /* Растягиваем на всю ширину карточки */
-    height: 350px;         /* Устанавливаем ЖЕСТКУЮ высоту для всех фото */
-    object-fit: cover;     /* МАГИЯ: картинка обрезается под размер, а не сплющивается */
-    object-position: center; /* Центрируем фото (чтобы флакон был посередине) */
+    width: 100%;          
+    height: 200px;         
+    object-fit: cover;     
+    object-position: center;
     display: block;
 }
 
@@ -232,15 +315,151 @@ nav ul li a:hover {
 
 .products-grid {
     display: grid;
-    /* Создает колонки: минимум 250px, максимум — сколько влезет в ряд */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 30px;            /* Расстояние между карточками */
+    gap: 30px;            
     padding: 60px 20px;
-    max-width: 1200px;    /* Чтобы сетка не расползалась на весь экран */
-    margin: 0 auto;       /* Центрируем всю сетку */
+    max-width: 1200px;    
+    margin: 0 auto;       
 }
 
-/* Адаптивность для мобилок */
+footer {
+    padding: 50px 0;
+    background: #000;
+    text-align: center;
+    border-top: 1px solid #222;
+    color: #777;
+}
+/* --- СТИЛИ КОНТАКТОВ --- */
+.contact-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.contact-container {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-desc {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.info-block {
+    margin-bottom: 30px;
+}
+
+.info-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.info-block p {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--black);
+    margin-right: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--accent-color);
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+
+.contact-form-wrapper {
+    flex: 1;
+    background: #fdf0f2; 
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: var(--black);
+}
+
+.submit-btn {
+    width: 100%;
+    background: var(--black);
+    color: white;
+    border: none;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    opacity: 0.8;
+}
+
+.contact-bottom-banner {
+    background: var(--black);
+    color: white;
+    text-align: center;
+    padding: 40px;
+    margin-top: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+/* Адаптивность */
+@media (max-width: 850px) {
+    .contact-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .contact-form-wrapper {
+        width: 100%;
+    }
+}
+
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
